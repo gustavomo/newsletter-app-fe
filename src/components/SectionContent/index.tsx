@@ -3,7 +3,7 @@ import {
   Content,
 } from './styles';
 
-const ContentComponent = (props: any) => {
+const ContentComponent = (props: TContentComponentProps) => {
   return (
     <Content>
       {props.children}

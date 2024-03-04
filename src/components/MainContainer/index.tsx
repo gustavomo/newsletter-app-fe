@@ -3,7 +3,7 @@ import {
   Container,
 } from './styles';
 
-const ContainerComponent = (props: any) => {
+const ContainerComponent = (props: TContainerComponentProps) => {
   return (
     <Container>
       {props.children}
