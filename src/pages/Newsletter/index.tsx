@@ -25,7 +25,7 @@ import { createNewsletterAction, getNewslettersAction, submitNewsletterAction } 
 
 const NewslatterPage = () => {
   const dispatch = useAppDispatch();
-  const { data } = useAppSelector((state) => state.newsletter);
+  const { data, lastAction } = useAppSelector((state) => state.newsletter);
   const [images, setImages] = useState<any>([]);
   const [newletterSelected, setNewsletter] = useState(0);
   const history = useNavigate();
@@ -33,12 +33,21 @@ const NewslatterPage = () => {
   const {
     control,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm();
 
   useEffect(() => {
     dispatch(getNewslettersAction());
   }, []);
+
+  useEffect(() => {
+    if (lastAction === "newsletter/getNewsletters/fulfilled") {
+      setImages([]);
+      setValue("subject", "");
+      setValue("content", "");
+    }
+  }, [lastAction]);
 
   const getMessageError = (fieldError: FieldError) => {
     if (fieldError) {

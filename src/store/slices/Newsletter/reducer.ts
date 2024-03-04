@@ -24,6 +24,7 @@ export const newsletterSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(createNewsletterAction.fulfilled, (state, action) => {
       state.url = (action.payload);
+      state.lastAction = (action.type);
     })
     builder.addCase(getNewslettersAction.fulfilled, (state, action) => {
       state.data = (action.payload);
