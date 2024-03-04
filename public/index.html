@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Te ayudamos con soluciones digitales para los trámites relacionados con tu vehículo"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/favicon.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <script type="text/javascript">
+      if ("%NODE_ENV%" === "production") {
+        !(function (a, b, c, d, e, f, g, h) {
+          (a.RaygunObject = e),
+            (a[e] =
+              a[e] ||
+              function () {
+                (a[e].o = a[e].o || []).push(arguments);
+              }),
+            (f = b.createElement(c)),
+            (g = b.getElementsByTagName(c)[0]),
+            (f.async = 1),
+            (f.src = d),
+            g.parentNode.insertBefore(f, g),
+            (h = a.onerror),
+            (a.onerror = function (b, c, d, f, g) {
+              h && h(b, c, d, f, g),
+                g || (g = new Error(b)),
+                (a[e].q = a[e].q || []),
+                a[e].q.push({
+                  e: g,
+                });
+            });
+        })(
+          window,
+          document,
+          "script",
+          "//cdn.raygun.io/raygun4js/raygun.min.js",
+          "rg4js"
+        );
+      }
+    </script>
+    <title>AIL Frontend</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <script type="text/javascript">
+      if ("%NODE_ENV%" === "production") {
+        rg4js("apiKey", "OfSqWKquuK7kpY9RPzUuA");
+        rg4js("enableCrashReporting", true);
+      }
+    </script>
+  </body>
+</html>
