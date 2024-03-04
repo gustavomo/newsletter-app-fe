@@ -2,8 +2,7 @@ import executeRequest from "./index";
 
 export const createNewsletter: TCreateNewsletter = async (params) => {
   try {
-    const response = await executeRequest("/api/v1/newsletters", params, "POST");
-    return response;
+    await executeRequest("/api/v1/newsletters", params, "POST");
   } catch (error) {
     throw error;
   }
@@ -20,8 +19,7 @@ export const getNewsletter: TGetNewsletters = async () => {
 
 export const subscribeEmail: TSubscribeEmail = async (id, params) => {
   try {
-    const response = await executeRequest(`/api/v1/newsletters/${id}/emails`, params, "POST");
-    return response;
+    await executeRequest(`/api/v1/newsletters/${id}/emails`, params, "POST");
   } catch (error) {
     throw error;
   }
@@ -29,8 +27,7 @@ export const subscribeEmail: TSubscribeEmail = async (id, params) => {
 
 export const submitNewsletter: TSubmitNewsletter = async (id) => {
   try {
-    const response = await executeRequest(`/api/v1/newsletters/${id}/submit`, {}, "POST");
-    return response;
+    await executeRequest(`/api/v1/newsletters/${id}/submit`, {}, "POST");
   } catch (error) {
     throw error;
   }
@@ -38,8 +35,7 @@ export const submitNewsletter: TSubmitNewsletter = async (id) => {
 
 export const unsubscribeEmail: TUnsubscribeEmail = async (id) => {
   try {
-    const response = await executeRequest(`/api/v1/newsletters/subscribers/${id}`, {}, "DELETE");
-    return response;
+    await executeRequest(`/api/v1/newsletters/subscribers/${id}`, {}, "DELETE");
   } catch (error) {
     throw error;
   }

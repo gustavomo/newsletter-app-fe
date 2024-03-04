@@ -1,23 +1,23 @@
 type TCreateNewsletter = (
-  params: any,
-) => Promise<any>;
+  params: { subject: string, file_url: string },
+) => Promise<void | Error| Error>;
 
-type TGetNewsletters = () => Promise<any>;
+type TGetNewsletters = () => Promise<IObj | Error>;
 
 type TUploadFile = (
-  params: any,
-  file: File,  
-) => Promise<string>;
+  params: { subject: string },
+  file: File,
+) => Promise<string | Error>;
 
 type TSubscribeEmail = (
   id: number,
-  params: any,
-) => Promise<any>;
+  params: { email: string },
+) => Promise<void | Error>;
 
 type TSubmitNewsletter = (
   id: number,
-) => Promise<any>;
+) => Promise<void | Error>;
 
 type TUnsubscribeEmail = (
   id: number,
-) => Promise<any>;
+) => Promise<void | Error>;

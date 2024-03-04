@@ -20,11 +20,11 @@ const createNewsletterAction = createAsyncThunk<any, { file: File, inputParams: 
 
     try {
       const response = await uploadFile(params.inputParams, params.file);
-      await createNewsletter({ ...params.inputParams, file_url: response });
+      await createNewsletter({ ...params.inputParams, file_url: response as string });
 
       thunk.dispatch(setOpenSpinner(false));
       thunk.dispatch(getNewslettersAction());
-      return response;
+      return null;
     } catch (error) {
       thunk.dispatch(setGoToError(true));
       thunk.dispatch(setOpenSpinner(false));
@@ -57,10 +57,10 @@ const subscribeEmailAction = createAsyncThunk<any, { id: number, inputParams: { 
     thunk.dispatch(setOpenSpinner(true));
 
     try {
-      const response = await subscribeEmail(params.id, params.inputParams);
+      await subscribeEmail(params.id, params.inputParams);
 
       thunk.dispatch(setOpenSpinner(false));
-      return response;
+      return null;
     } catch (error) {
       thunk.dispatch(setGoToError(true));
       thunk.dispatch(setOpenSpinner(false));
@@ -75,10 +75,10 @@ const submitNewsletterAction = createAsyncThunk<any, { id: number }, null>(
     thunk.dispatch(setOpenSpinner(true));
 
     try {
-      const response = await submitNewsletter(params.id);
+      await submitNewsletter(params.id);
 
       thunk.dispatch(setOpenSpinner(false));
-      return response;
+      return null;
     } catch (error) {
       thunk.dispatch(setGoToError(true));
       thunk.dispatch(setOpenSpinner(false));
@@ -93,10 +93,10 @@ const unsubscribeEmailAction = createAsyncThunk<any, { id: number }, null>(
     thunk.dispatch(setOpenSpinner(true));
 
     try {
-      const response = await unsubscribeEmail(params.id);
+      await unsubscribeEmail(params.id);
 
       thunk.dispatch(setOpenSpinner(false));
-      return response;
+      return null;
     } catch (error) {
       thunk.dispatch(setGoToError(true));
       thunk.dispatch(setOpenSpinner(false));
