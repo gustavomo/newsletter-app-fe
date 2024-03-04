@@ -12,7 +12,7 @@ import {
 import { unsubscribeEmailAction } from "../../store/slices/Newsletter/actions";
 import { useAppDispatch } from "../../store/hooks";
 
-import { Container, Content } from "./style";
+import { Content } from "./style";
 
 const UnsubscribePage = () => {
   const dispatch = useAppDispatch();
@@ -24,7 +24,7 @@ const UnsubscribePage = () => {
   }, []);
 
   return (
-    <Container>
+    <main>
       <Content>
         <Block space={3}>
           <Title size={"small"}>{"You have been removed from the newsletter"}</Title>
@@ -43,7 +43,7 @@ const UnsubscribePage = () => {
           </ButtonsContainer>
         </Block>
       </Content>
-    </Container>
+    </main>
   );
 };
 

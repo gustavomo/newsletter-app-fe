@@ -11,7 +11,7 @@ import {
 import { setGoToError } from "../../store/slices/App/actions";
 import { useAppDispatch } from "../../store/hooks";
 
-import { Container, Content } from "./style";
+import { Content } from "./style";
 
 const ErrorPage = () => {
   const dispatch = useAppDispatch();
@@ -22,7 +22,7 @@ const ErrorPage = () => {
   }, []);
 
   return (
-    <Container>
+    <main>
       <Content>
         <Block space={3}>
           <Title size={"small"}>{"Oops!!! Something went wrong"}</Title>
@@ -41,7 +41,7 @@ const ErrorPage = () => {
           </ButtonsContainer>
         </Block>
       </Content>
-    </Container>
+    </main>
   );
 };
 
