@@ -79,6 +79,12 @@ const NewsletterSubscriptionPage = () => {
               name={"email"}
               rules={{
                 required: true,
+                minLength: 3,
+                maxLength: 40,
+                pattern: {
+                  message: 'Invalid email',
+                  value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+                },
               }}
               render={({ field }) => (
                 <Input

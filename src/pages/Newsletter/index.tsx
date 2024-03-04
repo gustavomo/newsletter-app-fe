@@ -52,7 +52,7 @@ const NewslatterPage = () => {
   };
 
   const getFormDisabled = () => {
-    if (Object.keys(errors).length) {
+    if (Object.keys(errors).length || !images["newsletterFile"]) {
       return true;
     }
 
@@ -177,6 +177,8 @@ const NewslatterPage = () => {
               name={"subject"}
               rules={{
                 required: true,
+                minLength: 3,
+                maxLength: 40,
               }}
               render={({ field }) => (
                 <Input
@@ -195,6 +197,8 @@ const NewslatterPage = () => {
               name={"content"}
               rules={{
                 required: true,
+                minLength: 3,
+                maxLength: 40,
               }}
               render={({ field }) => (
                 <Textarea
