@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import {
   Block,
@@ -9,7 +9,7 @@ import {
   Title
 } from "@tranqi/ui-kit";
 
-import { setGoToError } from "../../store/slices/App/actions";
+import { unsubscribeEmailAction } from "../../store/slices/Newsletter/actions";
 import { useAppDispatch } from "../../store/hooks";
 
 import { Container, Content } from "./style";
@@ -17,9 +17,10 @@ import { Container, Content } from "./style";
 const UnsubscribePage = () => {
   const dispatch = useAppDispatch();
   const history = useNavigate();
+  const { id } = useParams();
 
   useEffect(() => {
-    dispatch(setGoToError(false));
+    dispatch(unsubscribeEmailAction({ id: parseInt(id) }));
   }, []);
 
   return (

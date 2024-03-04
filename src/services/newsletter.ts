@@ -35,3 +35,12 @@ export const submitNewsletter: TSubmitNewsletter = async (id) => {
     throw error;
   }
 };
+
+export const unsubscribeEmail: TUnsubscribeEmail = async (id) => {
+  try {
+    const response = await executeRequest(`/api/v1/newsletters/0/subscribers/${id}`, {}, "DELETE");
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};

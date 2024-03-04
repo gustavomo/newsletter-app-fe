@@ -6,7 +6,7 @@ type TGetNewsletters = () => Promise<any>;
 
 type TUploadFile = (
   params: any,
-  file: any,  
+  file: File,  
 ) => Promise<string>;
 
 type TSubscribeEmail = (
@@ -15,5 +15,9 @@ type TSubscribeEmail = (
 ) => Promise<any>;
 
 type TSubmitNewsletter = (
+  id: number,
+) => Promise<any>;
+
+type TUnsubscribeEmail = (
   id: number,
 ) => Promise<any>;

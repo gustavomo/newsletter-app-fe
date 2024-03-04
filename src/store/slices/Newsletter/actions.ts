@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import { uploadFile } from "../../../services/file";
-import { createNewsletter, getNewsletter, submitNewsletter, subscribeEmail } from "../../../services/newsletter";
+import { createNewsletter, getNewsletter, submitNewsletter, subscribeEmail, unsubscribeEmail } from "../../../services/newsletter";
 
 import { setGoToError, setOpenSpinner } from "../App/actions";
 
@@ -87,7 +87,26 @@ const submitNewsletterAction = createAsyncThunk<any, { id: number }, null>(
   }
 );
 
+const unsubscribeEmailAction = createAsyncThunk<any, { id: number }, null>(
+  "newsletter/unsubscribeEmail",
+  async (params, thunk) => {
+    thunk.dispatch(setOpenSpinner(true));
+
+    try {
+      const response = await unsubscribeEmail(params.id);
+
+      thunk.dispatch(setOpenSpinner(false));
+      return response;
+    } catch (error) {
+      thunk.dispatch(setGoToError(true));
+      thunk.dispatch(setOpenSpinner(false));
+      return "";
+    }
+  }
+);
+
 export {
+  unsubscribeEmailAction,
   submitNewsletterAction,
   getNewslettersAction,
   createNewsletterAction,

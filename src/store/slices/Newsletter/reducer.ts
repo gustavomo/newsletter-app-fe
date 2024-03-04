@@ -4,6 +4,7 @@ import {
   createNewsletterAction,
   getNewslettersAction,
   subscribeEmailAction,
+  unsubscribeEmailAction,
 } from "./actions";
 
 const initialState: TNewsletterReducer = {
@@ -29,6 +30,9 @@ export const newsletterSlice = createSlice({
       state.lastAction = (action.type);
     }),
     builder.addCase(subscribeEmailAction.fulfilled, (state, action) => {
+      state.lastAction = (action.type);
+    })
+    builder.addCase(unsubscribeEmailAction.fulfilled, (state, action) => {
       state.lastAction = (action.type);
     })
   },
