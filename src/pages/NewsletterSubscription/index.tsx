@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Controller, FieldError, useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -7,6 +7,8 @@ import {
   Button,
   ButtonsContainer,
   Input,
+  Modal,
+  Text,
 } from "@tranqi/ui-kit";
 
 import MainContainer from "../../components/MainContainer";
@@ -18,6 +20,7 @@ import { subscribeEmailAction } from "../../store/slices/Newsletter/actions";
 const NewsletterSubscriptionPage = () => {
   const dispatch = useAppDispatch();
   const { lastAction } = useAppSelector((state) => state.newsletter);
+  const [alert, setAlert] = useState(false);
   const history = useNavigate();
   const { id } = useParams();
 
@@ -29,7 +32,7 @@ const NewsletterSubscriptionPage = () => {
 
   useEffect(() => {
     if (lastAction === "newsletter/subscribeEmail/fulfilled") {
-      history("/");
+      setAlert(true);
     }
   }, [lastAction]);
 
@@ -61,8 +64,34 @@ const NewsletterSubscriptionPage = () => {
     dispatch(subscribeEmailAction(params as any));
   });
 
+
+  const renderModal = () => {
+    if (!alert) {
+      return null;
+    }
+
+    return (
+      <Block space={3}>
+        <Modal
+          leftButtonText="Cancel"
+          rightButtonText="Ok"
+          title="Email subscribed successfully"
+          leftOnClick={() => {
+            history("/");
+          }}
+          rightOnClick={() => {
+            history("/");
+          }}
+          open={true}
+        >
+        </Modal>
+      </Block>
+    );
+  };
+
   return (
     <MainContainer>
+      {renderModal()}
       <SectionContent>
         <form
           onSubmit={onSubmit}
