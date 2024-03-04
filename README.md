@@ -24,4 +24,4 @@ npm run start
 
 ## Related Repositories
 
-- [Newsletter APP BE](<repository_url>)
+- [Newsletter APP BE](<https://github.com/gustavomo/newsletter-app-be>)
