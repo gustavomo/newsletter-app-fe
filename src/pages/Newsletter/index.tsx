@@ -8,13 +8,14 @@ import {
   Button,
   ButtonsContainer,
   Input,
+  Modal,
   ResumeCard,
   ResumeContainer,
+  Separator,
   Text,
   Textarea,
   UploadFileCard,
   UploadFileContainer,
-  Modal,
 } from "@tranqi/ui-kit";
 
 import MainContainer from "../../components/MainContainer";
@@ -98,9 +99,10 @@ const NewslatterPage = () => {
   const renderNewsletters = () => {
     return data.map((item: TNewsletter, index: number) => {
       return (
-        <ResumeCard key={index} title={item.subject}>
+        <>
+        <ResumeCard key={index} title={`SUBJECT: ${item.subject}`}>
           <Block space={1} position={"start"}>
-            <Text size={"large"}>{item.content.slice(0, 40)}</Text>
+            <Text size={"large"}>{`CONTENT: ${item.content.slice(0, 40)}`}</Text>
           </Block>
           <Block space={1} position={"start"}>
             <Button
@@ -135,6 +137,8 @@ const NewslatterPage = () => {
             </Button>
           </Block>
         </ResumeCard>
+        <Separator />
+        </>
       );
     });
   }
