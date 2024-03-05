@@ -1,13 +1,13 @@
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
+import { Spinner } from "@tranqi/ui-kit";
+
 import { useAppSelector } from "../store/hooks";
 
 import { Routing } from "./Routing";
 
 import Header from "../components/Header";
-
-import { Spinner } from "@tranqi/ui-kit";
 
 export const AppRouter = () => {
   const { openSpinner, goToError } = useAppSelector((state) => state.app);
