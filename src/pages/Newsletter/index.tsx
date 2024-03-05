@@ -233,7 +233,7 @@ const NewslatterPage = () => {
                     maxNumber={1}
                     dataURLKey="data_url"
                     allowNonImageType={true}
-                    acceptType={["pdf"]}
+                    acceptType={["pdf", "png"]}
                   >
                     {({
                       imageList,
