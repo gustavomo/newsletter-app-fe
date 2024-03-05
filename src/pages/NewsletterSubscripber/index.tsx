@@ -8,6 +8,9 @@ import {
   ButtonsContainer,
   Input,
   Modal,
+  ResumeCard,
+  ResumeContainer,
+  Separator,
   Text,
 } from "@tranqi/ui-kit";
 
@@ -15,11 +18,11 @@ import MainContainer from "../../components/MainContainer";
 import SectionContent from "../../components/SectionContent";
 
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { subscribeEmailAction } from "../../store/slices/Newsletter/actions";
+import { getNewsletterSubscribersAction, subscribeEmailAction } from "../../store/slices/Newsletter/actions";
 
-const NewsletterSubscriptionPage = () => {
+const NewsletterSubscripberPage = () => {
   const dispatch = useAppDispatch();
-  const { lastAction } = useAppSelector((state) => state.newsletter);
+  const { lastAction, subscribers } = useAppSelector((state) => state.newsletter);
   const [alert, setAlert] = useState(false);
   const history = useNavigate();
   const { id } = useParams();
@@ -29,6 +32,11 @@ const NewsletterSubscriptionPage = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+
+  useEffect(() => {
+    dispatch(getNewsletterSubscribersAction(parseInt(id)));
+  }, []);
 
   useEffect(() => {
     if (lastAction === "newsletter/subscribeEmail/fulfilled") {
@@ -89,6 +97,18 @@ const NewsletterSubscriptionPage = () => {
     );
   };
 
+  const renderNewsletters = () => {
+    return subscribers.map((item, index: number) => {
+      return (
+        <>
+          <ResumeCard key={index} title={`EMAIL: ${item.email}`}>
+          </ResumeCard>
+          <Separator />
+        </>
+      );
+    });
+  }
+
   return (
     <MainContainer>
       {renderModal()}
@@ -138,9 +158,17 @@ const NewsletterSubscriptionPage = () => {
             </ButtonsContainer>
           </Block>
         </form>
+        <Block space={3}>
+          <Text size={"large-bold"}>{"Subscribers List"}</Text>
+        </Block>
+        <Block space={3}>
+          <ResumeContainer>
+            {renderNewsletters()}
+          </ResumeContainer>
+        </Block>
       </SectionContent>
     </MainContainer>
   );
 };
 
-export default NewsletterSubscriptionPage;
+export default NewsletterSubscripberPage;

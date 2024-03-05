@@ -1,6 +1,6 @@
 type TCreateNewsletter = (
   params: { subject: string, file_url: string },
-) => Promise<void | Error| Error>;
+) => Promise<void | Error | Error>;
 
 type TGetNewsletters = () => Promise<IObj | Error>;
 
@@ -21,3 +21,8 @@ type TSubmitNewsletter = (
 type TUnsubscribeEmail = (
   id: number,
 ) => Promise<void | Error>;
+
+
+type TGetNewsletterSubscribers = (
+  id: number,
+) => Promise<IObj | Error>;

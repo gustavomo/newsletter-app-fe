@@ -1,6 +1,7 @@
 type TNewsletterReducer = {
   url: string;
   data: TNewsletter[];
+  subscribers: TSubscriber[];
   lastAction: string;
 }
 
@@ -9,6 +10,13 @@ type TNewsletter = {
   subject: string;
   content: string;
   file_url: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+type TSubscriber = {
+  id: number;
+  email: string;
   createdAt: string;
   updatedAt: string;
 }

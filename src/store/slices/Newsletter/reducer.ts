@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import {
   createNewsletterAction,
   getNewslettersAction,
+  getNewsletterSubscribersAction,
   subscribeEmailAction,
   unsubscribeEmailAction,
 } from "./actions";
@@ -10,6 +11,7 @@ import {
 const initialState: TNewsletterReducer = {
   data: [],
   lastAction: "",
+  subscribers: [],
   url: "",
 };
 
@@ -35,6 +37,9 @@ export const newsletterSlice = createSlice({
     })
     builder.addCase(unsubscribeEmailAction.fulfilled, (state, action) => {
       state.lastAction = (action.type);
+    })
+    builder.addCase(getNewsletterSubscribersAction.fulfilled, (state, action) => {
+      state.subscribers = (action.payload);
     })
   },
 });

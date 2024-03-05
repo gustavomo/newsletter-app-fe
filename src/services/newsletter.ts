@@ -40,3 +40,12 @@ export const unsubscribeEmail: TUnsubscribeEmail = async (id) => {
     throw error;
   }
 };
+
+export const getNewsletterSubscribers: TGetNewsletterSubscribers = async (id) => {
+  try {
+    const response = await executeRequest(`/api/v1/newsletters/${id}/subscribers`, null, "GET");
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};
