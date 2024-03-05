@@ -6,6 +6,7 @@
 
 - nvm
 - BE repository
+- PORT 3001 free
 
 ### Install
 
