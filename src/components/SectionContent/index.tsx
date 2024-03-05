@@ -1,4 +1,3 @@
-// Styles
 import {
   Content,
 } from './styles';

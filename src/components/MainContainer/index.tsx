@@ -1,4 +1,3 @@
-// Styles
 import {
   Container,
 } from './styles';
